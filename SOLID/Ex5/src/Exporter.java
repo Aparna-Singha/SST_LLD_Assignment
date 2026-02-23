@@ -1,4 +1,4 @@
-public abstract class Exporter {
+public interface Exporter {
     // implied "contract" but not enforced (smell)
-    public abstract ExportResult export(ExportRequest req);
+    public ExportResult export(ExportRequest req);
 }

@@ -1,12 +1,16 @@
 import java.nio.charset.StandardCharsets;
 
-public class JsonExporter extends Exporter {
+public class JsonExporter implements Exporter {
     @Override
     public ExportResult export(ExportRequest req) {
-        // inconsistent handling (surprise)
-        if (req == null) return new ExportResult("application/json", new byte[0]);
+        try {
+            ExportValidator.validate(req);
+        } catch (IllegalArgumentException e) {
+            return ExportResult.error(e.getMessage());
+        }
+
         String json = "{\"title\":\"" + escape(req.title) + "\",\"body\":\"" + escape(req.body) + "\"}";
-        return new ExportResult("application/json", json.getBytes(StandardCharsets.UTF_8));
+        return ExportResult.ok("application/json", json.getBytes(StandardCharsets.UTF_8));
     }
 
     private String escape(String s) {
