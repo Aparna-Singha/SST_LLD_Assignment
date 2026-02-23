@@ -1,3 +1,3 @@
-public class MonthlyFeesCalculator {
-    
+public interface MonthlyFeesCalculator {
+    Money fee();
 }

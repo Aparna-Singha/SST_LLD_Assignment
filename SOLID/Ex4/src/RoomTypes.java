@@ -1,3 +1,3 @@
-public class RoomTypes {
-    
+public interface RoomTypes {
+    Money basePrice();
 }
