@@ -9,11 +9,12 @@ public class Main {
         sys.addToMenu(new MenuItem("C1", "Coffee", 30.00));
         sys.addToMenu(new MenuItem("S1", "Sandwich", 60.00));
 
+        Customer customer = new StudentCustomer();
         List<OrderLine> order = List.of(
                 new OrderLine("M1", 2),
                 new OrderLine("C1", 1)
         );
 
-        sys.checkout("student", order);
+        sys.checkout(customer, order);
     }
 }

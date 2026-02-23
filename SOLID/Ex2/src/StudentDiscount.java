@@ -1,13 +1,9 @@
-
-
-public class StudentDiscount {
-    public static  void discountAmount(String customerType,double subtotal) {
-        // hard-coded policy (smell)
-        if (subtotal >= 180.0){
-            System.out.println(10);
+public class StudentDiscount extends DiscountRules {
+    public double discountAmount(double subtotal, int distinctLines) {
+        if (subtotal >= 180.0) {
+            return 10.0;
         }
-        else{
-            System.out.println(0);
-        }
+
+        return 0;
     }
 }
