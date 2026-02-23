@@ -1,3 +1,3 @@
-public class Rules {
-    
+public interface Rules {
+    Reason evaluate(StudentProfile s);
 }

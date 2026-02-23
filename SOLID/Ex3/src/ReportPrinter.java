@@ -1,4 +1,5 @@
-public class ReportPrinter {
+public class ReportPrinter implements ReasonFormating {
+    @Override
     public void print(StudentProfile s, EligibilityEngineResult r) {
         System.out.println("Student: " + s.name + " (CGR=" + String.format("%.2f", s.cgr)
                 + ", attendance=" + s.attendancePct + ", credits=" + s.earnedCredits

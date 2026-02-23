@@ -1,14 +1,19 @@
-import java.util.*;
+import java.util.List;
 
 public class EligibilityEngine {
-    private final FakeEligibilityStore store;
+    private final EligibilityEngineCalculator store;
+    private final ReasonFormating printer;
+    private final List<Rules> rules;
 
-    public EligibilityEngine(FakeEligibilityStore store) { this.store = store; }
+    public EligibilityEngine(EligibilityEngineCalculator store, ReasonFormating printer, List<Rules> rules) {
+        this.store = store;
+        this.printer = printer;
+        this.rules = rules;
+    }
 
     public void runAndPrint(StudentProfile s) {
-        ReportPrinter p = new ReportPrinter();
-        // EligibilityEngineResult r = EligibilityEngineResult.evaluate(s); // giant conditional inside
-        p.print(s, r);
+        EligibilityEngineResult r = EligibilityEngineResult.evaluate(s, rules);
+        printer.print(s, r);
         store.save(s.rollNo, r.status);
     }
 }
