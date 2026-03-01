@@ -1,3 +1,3 @@
 public class Rubric {
-    public final int bonus = 28;
+    public final int bonus = 12;
 }
