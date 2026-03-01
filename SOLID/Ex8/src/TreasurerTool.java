@@ -4,5 +4,4 @@ public class TreasurerTool implements ITreasurerTool {
 
     @Override public void addIncome(double amt, String note) { ledger.add(amt, note); }
     @Override public void addExpense(double amt, String note) { ledger.add(-amt, note); }
-    @Override public int getEventsCount() { return 0; } // dummy
 }

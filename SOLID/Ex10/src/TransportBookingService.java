@@ -1,21 +1,15 @@
 public class TransportBookingService {
-    private DistanceCalculator dist;
-    private IDriverAllocator alloc;
-    private PaymentGateway pay;
+    private final IDistanceCalculator dist;
+    private final IDriverAllocator alloc;
+    private final IPaymentGateway pay;
 
-    public TransportBookingService (DistanceCalculator dist, IDriverAllocator alloc, PaymentGateway pay){
-
-        this.dist = new DistanceCalculator();
-        this.alloc = new DriverAllocator();
-        this.pay = new PaymentGateway();
-
+    public TransportBookingService(IDistanceCalculator dist, IDriverAllocator alloc, IPaymentGateway pay){
+        this.dist = dist;
+        this.alloc = alloc;
+        this.pay = pay;
     }
-    // DIP violation: direct concretes
-    public void book(TripRequest req) {
-        // DistanceCalculator dist = new DistanceCalculator();
-        // DriverAllocator alloc = new DriverAllocator();
-        // PaymentGateway pay = new PaymentGateway();
 
+    public void book(TripRequest req) {
         double km = dist.km(req.from, req.to);
         System.out.println("DistanceKm=" + km);
 
