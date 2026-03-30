@@ -1,19 +1,17 @@
-package elevator;
+public abstract class Request {
+    protected final int sourceFloor;
+    protected final long timestamp;
 
-public class Request {
-    private final int floor;
-    private final Direction direction;
-
-    public Request(int floor, Direction direction) {
-        this.floor = floor;
-        this.direction = direction;
+    protected Request(int sourceFloor) {
+        this.sourceFloor = sourceFloor;
+        this.timestamp = System.currentTimeMillis();
     }
 
-    public int getFloor() {
-        return floor;
+    public int getSourceFloor() {
+        return sourceFloor;
     }
 
-    public Direction getDirection() {
-        return direction;
+    public long getTimestamp() {
+        return timestamp;
     }
 }
